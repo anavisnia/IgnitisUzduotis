@@ -1,0 +1,42 @@
+﻿@*
+
+*@
+@{
+    ViewData["Title"] = "Drop Down";
+}
+
+<h2>Drop Down Select</h2>
+
+@model DropDownModel
+@*<form asp-controller="DropDown" asp-action="Index" method="post">
+        <select asp-for="DropDown" asp-items="Model.DropDownValues"></select>
+        <br /><button type="submit">Register</button>
+    </form>*@
+
+@*<form method="post" action="/">
+        <select id="DropDown" name="DropDownSelect">
+            <option value="Book">Reading books</option>
+            <option selected="selected" value="Movie">Watching movies</option>
+            <option value="Bicycle">Riding bicycle</option>
+        </select>
+        <br /><button type="submit">Register</button>
+        <input name="__RequestVerificationToken" type="hidden" value="<removed for brevity>">
+    </form>*@
+
+@foreach (var question in ViewBag.Questions)
+{
+    <tr class="row">
+        <td>@question.Name</td>
+        <td>
+            <select id="@question.Id" name="Id">
+                @foreach (var dropdown in ViewBag.DropDowns)
+                {
+                    @if (question.Id == dropdown.QuestionModelId)
+                    {
+                        <option value="@dropdown.Value">@dropdown.Name</option>
+                    }
+                }
+            </select>
+        </td>
+    </tr>
+}

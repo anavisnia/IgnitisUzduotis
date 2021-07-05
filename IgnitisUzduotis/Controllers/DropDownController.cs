@@ -16,7 +16,8 @@ namespace IgnitisUzduotis.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Questions = _context.Questions.ToList();
+            //ViewBag.Questions = _context.Questions.ToList();
+            ViewData["Questions"] = _context.Questions.ToList();
             ViewBag.DropDowns = _context.DropDowns.ToList();
             return View();
         }
